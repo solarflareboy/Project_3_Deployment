@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<link rel = "stylesheet" href = "LoginScreen.css">
+<script src = LoginScreen.js> </script>
+</head>
+<body>
+
+<h2> Chick-fil-B Login Screen </h2>
+
+<button onclick = "document.getElementById('LoginWindow').style.display = 'block'" style = "width:auto;"> Login </button>
+
+<div id = "LoginWindow" class = "login">
+
+  <form class = "login-content animate">
+    <div class = "imgposition">
+      <img src = "Media_Used/icon.png">
+    </div>
+
+    <div class = "container">
+      <label for = "username"> <b> Username </b> </label>
+      <input type = "text" placeholder = "Enter Username" name = "username" required>
+
+      <br> <br>
+
+      <label for = "password"> <b> Password </b> </label>
+      <input type = "password" id = "password_user" placeholder = "Enter Password" name = "password" required>
+      <input type = "checkbox" onclick = "showPassword()"> Show Password
+
+      <br> <br>
+
+      <div class = "button_effect_ext_link" button type = "submit"> <i> <span> Login </span> </i> </button> </div> 
+      
+      <br> <br>
+
+      <label>
+        <input type = "checkbox" checked = "checked" name = "remember"> Remember me
+      </label>
+    </div>
+
+    <div class = "container" style = "background-color:#ffffff">
+      <button type = "button" onclick = "document.getElementById('LoginWindow').style.display = 'none'" class = "cancelbutton"> Cancel </button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+var login = document.getElementById('LoginWindow');
+
+window.onclick = function(func) {
+    if (func.target == login) {
+        login.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
