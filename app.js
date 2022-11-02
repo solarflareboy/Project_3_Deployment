@@ -4,7 +4,6 @@ const port = 8000 | process.env.PORT
 
 app.use("/", express.static("./public/homepage"))
 app.use("/cashier", express.static("./public/cashier"))
-app.use("/customer", express.static("./public/customer"))
 app.use("/manager", express.static("./public/manager"))
 
 app.listen(port, () => {
