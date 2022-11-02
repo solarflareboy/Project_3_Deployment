@@ -1,0 +1,13 @@
+{
+    "name": "chickfilb",
+    "version": "1.0.0",
+    "description": "Chick-fil-B is a web-application that is able to mimic a food ordering system from the perspectives of customers, cashiers, and managers.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.tamu.edu:gahlota2002/CSCE-315-Project-3.git"
+    }
+}
