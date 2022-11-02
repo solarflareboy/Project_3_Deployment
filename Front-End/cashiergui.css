@@ -1,11 +1,11 @@
 /*This would be code for your gui.*/
 
-button{
+button {
     font-size: 25pt;
     margin: 10px;
 }
 
-.flex-container{
+.flex-container {
     display: inline-flex;
     flex-wrap: wrap;
     border: solid black 2px;
@@ -13,12 +13,12 @@ button{
     margin: 10px;
 }
 
-#menu-items{
+#menu-items {
     width: 70%;
     height: 700px;
 }
 
-#receipt{
+#receipt {
     width: 25%;
     height: 700px;
     flex-direction: column;

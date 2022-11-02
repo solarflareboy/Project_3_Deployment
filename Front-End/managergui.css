@@ -1,20 +1,48 @@
-/*This would be code for your gui.*/
-.navigatingbar {
-    overflow: hidden;
-    background-color: #333;
-  }
+.managertop {
+	overflow: hidden;
+	background-color: #333;
+	text-align: right;
+	padding: 14px 16px;
 
-  button {
-    background-color: #15aa04;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
+}
+
+button {
+	background-color: #15aa04;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+logoutbutton {
+	background-color: #c00000;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 8px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
+
+logoutbutton:hover {
+	opacity: 0.8;
+}
+
+mgrname {
+	font-size: 20px;
+	color: white;
+	text-align: right;
+}
+
+.managermain {
+	padding: 16px 16px;
+	background-color: #eeeeee;
+}
