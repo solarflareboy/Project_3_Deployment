@@ -4,15 +4,20 @@
     "description": "Chick-fil-B is a web-application that is able to mimic a food ordering system from the perspectives of customers, cashiers, and managers.",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
-        "dev": "nodemon -e * app.js"
+        "start": "npm run open & node app.js",
+        "dev": "npm run open & nodemon -e * app.js",
+        "update": "npm i",
+        "open": "open-cli http://localhost:8000"
     },
     "repository": {
         "type": "git",
-        "url": "git@github.tamu.edu:gahlota2002/CSCE-315-Project-3.git"
+        "url": "https://github.tamu.edu/gahlota2002/CSCE-315-Project-3"
     },
     "dependencies": {
-        "express": "^4.18.2",
-        "nodemon": "^2.0.20"
+        "express": "^4.18.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20",
+        "open-cli": "^7.1.0"
     }
 }
