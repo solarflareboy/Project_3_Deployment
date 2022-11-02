@@ -18,7 +18,7 @@ loginButton.addEventListener("click", (event) => {
     // TODO: Add database call here
     if (username === "Manager" && password === "12345") {
         alert("You have successfully logged in."); // Do we need this?
-        location.replace("managergui.html");
+        location.replace("../manager/index.html");
     } else {
         alert("Error: Username or Password is incorrect.");
     }
