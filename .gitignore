@@ -3,3 +3,6 @@
 
 # The big boi
 node_modules
+
+# Mac moment
+.DS_Store
