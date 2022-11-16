@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
-    <link rel = "stylesheet" href = "cashiergui.css">
-    <script src = cashiergui.js> </script>
+    <meta name="viewport" content ="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="cashier-gui.css">
+
+    <title>Chick-fil-B - Cashier</title>
+
+    <script src="cashier-gui.js" type="module" defer> </script>
+    <link rel="icon" href="../media/icon.png" type="image/png">
 </head>
 
 <body>
-
-    <!--<h1 align = "center"> <p style = "font-size: 40px"> Chick-fil-B </p></h1>-->
-
-    <!--Put your code in this part of this code.-->
-    <div class="flex-container" id="menu-items">
-        <div><button>Chicken Sandwich</button></div>
-        <div><button>Spicy Chicken Sandwich</button></div>
-        <div><button>Deluxe Chicken Sandwich</button></div>
-        <div><button>Spicy Deluxe Chicken Sandwich</button></div>
-        <div><button>8-pc Chicken Nuggets</button></div>
+    <div id="container">
+        <div id="navbar">
+            <div id="logo">
+                <img src="../media/icon.png" alt="Chick-fil-B Logo">
+            </div>
+            <div id="cashier-name">Cashier: N/A</div>
+            <div id="nav-space"></div>
+            <button id="logout-button">Logout</button>
+            <div id="translate"></div>
+        </div>
+    <div id="content">
+        <div class="flex-container" id="menu-items"></div>
+            <div class="flex-container" id="receipt">
+                <h2>Receipt</h2>
+                <div id="receipt-items"></div>
+                <div id="running-total"><p>Total: $0.00</p></div>
+                <button id="checkout-button">Checkout</button>
+            </div>
+        </div>
     </div>
-    
-    <div class="flex-container" id="receipt">
-        <div style="font-size: 20pt;">Receipt</div>
-        <div>Order 1</div>
-        <div>Order 2</div>
-        <div>Order 3</div>
-        <div><button>Checkout</button></div>
-    </div>
 
+	<script>
+        function googleTranslateFunctionality() {
+            new google.translate.TranslateElement({
+                pageLanguage: "en",
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, "translate");
+        }
+	</script>
+
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateFunctionality"></script>
 </body>
 </html>

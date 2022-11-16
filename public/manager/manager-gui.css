@@ -1,0 +1,119 @@
+.managertop {
+	overflow: hidden;
+	background-color: #303030;
+	text-align: right;
+	padding: 14px 16px;
+}
+
+button {
+	background-color: #15aa04;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+logoutbutton {
+	background-color: #c00000;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 8px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
+
+logoutbutton:hover {
+	opacity: 0.8;
+}
+
+xbutton {
+	background-color: transparent;
+	color: white;
+	margin: 8px 8px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
+
+mgrname {
+	font-size: 20px;
+	color: white;
+	text-align: right;
+}
+
+.managermain {
+	padding: 16px 16px;
+	background-color: #eeeeee;
+}
+
+.subwindow {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+
+	/* shadow */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+
+    padding-top: 60px;
+}
+
+.subwindow-title {
+	width: 80%; 
+}
+
+.subwindow-top {
+	background-color: #303030;
+	color: white;
+	padding: 10px 10px;
+	text-align: center;
+}
+
+.subwindow-main {
+	background-color: #ffffff;
+	margin: 5% auto 15% auto; 
+	width: 80%; 
+}
+
+.subwindow-top {
+	overflow: hidden;
+	background-color: #303030;
+	text-align: right;
+	color: white;
+	padding: 14px 16px;
+}
+
+.subwindow-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+reportbutton {
+	background-color: #15aa04;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
+
+reportbutton:hover {
+	opacity: 0.8;
+}

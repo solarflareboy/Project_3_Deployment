@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+	<title>Chick-fil-B</title>
+	<link rel = "stylesheet" href = "home.css">
+	<script defer src = "home.js" type="module"> </script>
+    <link rel="icon" href="./media/icon.png" type="image/png">
+</head>
+
+<body>
+
+	<div id = "google_translate_functionality"> </div>
+	<script type = "text/javascript">
+		function googleTranslateFunctionality() {
+			new google.translate.TranslateElement(
+				{pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_functionality'
+			);
+		}
+	</script>
+	<script type = "text/javascript" src = "//translate.google.com/translate_a/element.js?cb=googleTranslateFunctionality"> </script>
+
+	<div class = "navigatingbar">
+		<button onclick = "document.getElementById('').style.display = 'block'" style = "width:auto; height: auto;"> Order </button>
+		<button onclick = "document.getElementById('LoginWindow').style.display = 'block'" style = "width:auto;"> Login </button>
+		<button onclick = "document.getElementById('LocationWindow').style.display = 'block'" style = "width:auto;"> Location </button> 
+		<button onclick = "document.getElementById('').style.display = 'block'" style = "width:auto;"> About </button> 
+	</div>
+
+	<h1> <p style = "font-size: 40px; text-align: center;"> Chick-fil-B </p></h1>
+
+	<Marquee> <p style = "font-size: 20px"> All items 0% off RIGHT NOW! </p> </Marquee>
+
+	<div id = "LoginWindow" class = "login">
+		<form id = "login-form" class = "login-content animate">
+			<div class = "imgposition">
+				<img src = "../media/icon.png">
+			</div>
+
+			<div class = "container">
+				<label for = "username">
+					<b> Username </b>
+				</label>
+
+				<input type = "text" placeholder = "Enter Username" name = "username" required>
+				<br> <br>
+
+				<label for = "password">
+					<b> Password </b>
+				</label>
+
+				<input type = "password" id = "password_user" placeholder = "Enter Password" name = "password" required>
+				<input type = "checkbox" id = "show-password"> Show Password
+				<br> <br>
+
+				<div class = "button_effect_ext_link" id = "login-form-submit" button type = "submit"> 
+					<i> <span> Login </span> </i> </button> 
+				</div>
+				<br> <br>
+
+				<label>
+					<input type = "checkbox" checked = "checked" name = "remember"> Remember me
+				</label>
+			</div>
+
+			<div class = "container" style = "background-color:#ffffff">
+				<button type = "button" onclick = "document.getElementById('LoginWindow').style.display = 'none'" class = "cancelbutton"> Cancel </button>
+			</div>
+		</form>
+	</div>
+
+	<div id = "LocationWindow" class = "login">
+		<form class = "login-contact animate">
+		  <div class = "container">
+		  <p>Here woudl be maps</p>
+		  <iframe src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.767862475269!2d-96.34350164904991!3d30.612310281589345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864683cfb6d8cfe5%3A0x92e1351d7a3258e2!2sChick-fil-A!5e0!3m2!1sen!2sus!4v1668030247482!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">	</iframe>
+		  </div>
+	  
+		  <div class = "container" style = "background-color:#ffffff">
+			<button type = "button" onclick = "document.getElementById('LocationWindow').style.display = 'none'" class = "cancelbutton"> Close </button>
+		  </div>
+		</form>
+	</div>
+
+    <div class = "main-container">
+        <div class = "flex-box" id = "menu-items">
+            <!-- <div> <button> Chicken Sandwich </button> </div>
+            <div> <button> Spicy Chicken Sandwich </button> </div>
+            <div> <button> Deluxe Chicken Sandwich </button> </div> -->
+        </div>
+    
+        <!-- <div class = "flex-box" id = "menu-display">
+    
+            <p>Name of menu item:</p>
+        </div> -->
+    
+        <div class = "flex-box" id = "receipt">
+            <div style="font-size: 20pt;"> Receipt </div>
+            <!-- <div>Item 1</div>
+            <div>Item 2</div>
+            <div>Item 3</div> -->
+            <button id="checkout-button" style="order: 2;">Checkout</button>
+        </div>
+    </div>
+
+	<script>
+		var login = document.getElementById('LoginWindow');
+
+		window.onclick = function(func) {
+			if (func.target == login) {
+				login.style.display = "none";
+			}
+		}
+	</script>
+
+</body>
+</html>

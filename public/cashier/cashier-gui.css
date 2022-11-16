@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Rubik", sans-serif;
+}
+
+body {
+    overflow: hidden;
+    background-color: #eee;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    height: 3rem;
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    padding: 1.0rem;
+    justify-content: flex-end;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    min-height: 1px;
+}
+
+#menu-items {
+    width: 70%;
+    background-color: #fff;
+    border-radius: 1rem;
+    border: 1px solid #aaa;
+    padding: 1rem;
+    margin: 1rem 0.5rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow-y: scroll;
+    justify-content: center;
+}
+
+#receipt {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 1rem;
+    border: 1px solid #aaa;
+    margin: 1rem 1rem 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+#receipt-items {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 1px;
+    margin-top: 0.5rem;
+    border: 1px solid #aaa;
+    border-radius: 1rem;
+    overflow-y: scroll;
+    padding: 1rem;
+    height: 70%;
+}
+
+.receipt-item {
+    width: 100%;
+    min-height: 3rem;
+    margin-bottom: 1rem;
+    background-color: #eee;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#running-total {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+    height: 4rem;
+    background-color: #eee;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#checkout-button {
+    width: 100%;
+    height: 4rem;
+    background-color: rgb(170, 255, 199);
+    border: none;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 150ms;
+}
+
+#checkout-button:active {
+    transform: scale(1.01) !important;
+    background-color: rgb(131, 255, 172) !important;
+}
+
+#checkout-button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 1.5rem -0.5rem rgb(100, 255, 152);
+    background-color: rgb(131, 255, 172);
+}
+
+#translate {
+    border-radius: 5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    border: 1px solid #aaa;
+    padding: 15px;
+    background-color: #fff;
+}
+
+#translate div {
+    border: none !important;
+}
+
+.menu-tile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #aaa;
+    background-color: #eee;
+    cursor: pointer;
+    width: 8rem;
+    height: 8rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-tile:active {
+    transform: scale(1.01) !important;
+    background-color: rgb(100, 255, 152) !important;
+}
+
+.menu-tile:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 0 1.5rem -0.5rem rgb(100, 255, 152);
+    background-color: rgb(170, 255, 199);
+}
+
+.receipt-item-x {
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #999;
+    transition: all 150ms;
+}
+
+.receipt-item-x:hover {
+    color: #000;
+}
+
+.receipt-item-x:active {
+    color: #555;
+}
+
+#logout-button {
+    border: none;
+    background-color: rgb(255, 167, 167);
+    font-size: 1rem;
+    transition: all 150ms;
+    width: 8rem;
+    border-radius: 4rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    background-color: rgb(255, 131, 131);
+    box-shadow: 0 0 1.5rem -0.5rem rgb(255, 131, 131);
+    scale: 1.03;
+}
+
+#logout-button:active {
+    background-color: rgb(255, 100, 100);
+    scale: 1.01;
+}
+
+#logo img {
+    max-height: 100%;
+}
+
+#nav-space {
+    flex-grow: 1;
+}
+
+#cashier-name {
+    margin-left: 1rem;
+    background-color: #eee;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem 0 2rem;
+}

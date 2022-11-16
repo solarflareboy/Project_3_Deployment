@@ -6,3 +6,10 @@ node_modules
 
 # Mac moment
 .DS_Store
+*/.DS_Store
+
+# Notes for local testing stuff
+notes
+
+# Sensitive files
+users.csv
