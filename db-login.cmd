@@ -39,6 +39,8 @@ exit 0
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
 
+cls
+
 echo.
 echo Added users:
 

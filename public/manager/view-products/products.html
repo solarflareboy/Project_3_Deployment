@@ -1,0 +1,52 @@
+<html style="display: flex">
+    <head>
+        <link rel="stylesheet" href="../manager-gui.css">
+        <link rel="stylesheet" href="./products.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+        <script src="./products.js" type="module" defer></script>
+    </head>
+    <body class="popup-body">
+        <h2>Products</h2>
+        <div class="popup-container">
+            <div id="product-items" class="popup-category"></div>
+            <div id="modify-product" class="popup-category">
+                <h3>Modify Product</h3>
+                <div id="modify-area">
+                    <p id="modify-pre-message">Select a product to get started!</p>
+                    <div id="modify-content">
+                        <h4 id="modify-product-name">Product Name</h4>
+                        <p style="margin-bottom: 0.25rem;">Name</p>
+                        <input type="text" id="modify-product-name-input" value="Product Name">
+                        <p style="margin-bottom: 0.25rem; margin-top: 1rem;">Price</p>
+                        <input type="number" id="modify-product-price-input" min="0" step="0.01" value="0">
+                        <div id="modify-buttons">
+                            <button class="confirm-button" id="confirm-changes">Confirm Changes</button>
+                            <button class="confirm-button" id="remove-product">Remove Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="create-product" class="popup-category">
+                <h3>Create Product</h3>
+                <div id="create-area">
+                    <input type="text" id="create-product-name-input" placeholder="Product Name" style="margin-top: 1rem;">
+                    <input type="number" id="create-product-price-input" min="0" step="0.01" placeholder="Price">
+                    <div id="selector-area">
+                        <select name="Product Type" id="type-select">
+                            <option value="none" selected disabled hidden>Product Type</option>
+                        </select>
+                        <span class="material-symbols-outlined">
+                            expand_more
+                        </span>
+                    </div>
+                    <div id="ingredients" class="popup-category">
+                        <p>Ingredients</p>
+                        <div id="ingredients-items"></div>
+                    </div>
+                    <button class="confirm-button" id="confirm-create" disabled="true">Create</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

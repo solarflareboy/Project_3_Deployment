@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+	<title>Chick-fil-B</title>
+	<link rel = "stylesheet" href = "customer-gui.css">
+	<script defer src = "customer-gui.js" type = "module"> </script>
+    <link rel = "icon" href = "./media/icon.png" type = "image/png">
+</head>
+
+<body>
+    <div id = "container">
+        <div id = "navbar">
+            <div id = "logo">
+                <img src = "../media/icon.png" alt = "Chick-fil-B Logo">
+            </div>
+			<h4 id = "chickfilb-name">Chick-fil-B</h4>
+            <!-- <button id = "login-button" class = "navbar-button" onclick = "document.getElementById('LoginWindow').style.display='block'">Login</button> -->
+            <!-- <button id = "location-button" class = "navbar-button" onclick = "document.getElementById('LocationWindow').style.display='block'">Location</button>
+            <button id = "food-menu" class = "navbar-button" onclick = "document.getElementById('FoodMenu').style.display='block'">Food Menu</button> -->
+            <button id = "ShoppingCart-button" class = "navbar-button" onclick = "document.getElementById('ShoppingCart').style.display='block'">Shopping Cart</button>
+            <div id = "nav-space"></div>
+            <div id = "translate"></div>
+        </div>
+
+        <div id = "navbar-2">
+            <div class = "flex-container" id = "categories">
+                <!-- <h2>Categories</h2> -->
+            </div>
+        </div>
+
+        <div id = "content">
+            <!-- <div class = "flex-container" id = "categories">
+                <h2>Categories</h2>
+            </div> -->
+            <div class = "flex-container" id = "menu-items"></div>
+            <div class = "flex-container" id = "receipt">
+                <h2>Order</h2>
+                <div id = "receipt-items"></div>
+                <div id = "running-total"><p>Subtotal: $0.00</p></div>
+                <button id = "checkout-button">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+	<script>
+        function googleTranslateFunctionality() {
+            new google.translate.TranslateElement({
+                pageLanguage: "en",
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, "translate");
+        }
+	</script>
+
+	<script type = "text/javascript" src = "//translate.google.com/translate_a/element.js?cb=googleTranslateFunctionality"></script>
+
+    <div id = "ShoppingCart" class = "login">
+        <div class = "container" style = "background-color:#caa6a6">
+		<form class = "login-contact animate">
+            <div class = "CartContainer">
+                <div class = "Header">
+                    <h3 class = "Heading">Shopping Cart</h3>
+                    <h5 class = "Action">Remove All</h5>
+                </div>
+      
+                <div class = "Cart-Items">
+                    <div class = "image-box">
+                        <img src = "../media/chimkin.png" alt = "Chimkin" style = "height: 120px;"> 
+                    </div>
+                    <div class = "about">
+                        <h1 class = "title">Chimkin</h1>
+                        <br>
+                        <img src = "../media/Non-veg.png" alt = "Chimkin" style = "height: 30px;">
+                    </div>
+                    <div class = "counter">
+                        <div class = "btn">-</div>
+                        <div class = "count">2</div>
+                        <div class = "btn">+</div>
+                    </div>
+                    <div class = "prices">
+                        <div class = "amount">$5.00</div>
+                        <div class = "save"><u>Save for Later</u></div>
+                        <div class = "remove"><u>Remove</u></div>
+                    </div>
+                </div>
+      
+                <div class = "Cart-Items pad">
+                    <div class = "image-box">
+                        <img src = "../media/chimkin.png" alt = "Chimkin" style = "height: 120px;">
+                    </div>
+                    <div class = "about">
+                        <h1 class = "title">Chimkin</h1>
+                        <br>
+                        <img src = "../media/Non-veg.png" alt = "Chimkin" style = "height: 30px;">
+                    </div>
+                    <div class = "counter">
+                        <div class = "btn">-</div>
+                        <div class = "count">1</div>
+                        <div class = "btn">+</div>
+                    </div>
+                    <div class = "prices">
+                        <div class = "amount">$5.00</div>
+                        <div class = "save"><u>Save for Later</u></div>
+                        <div class = "remove"><u>Remove</u></div>
+                    </div>
+                </div>
+                <hr> 
+                <div class = "checkout">
+                    <div class = "total">
+                        <div>
+                            <div class = "Subtotal">Subtotal</div>
+                            <div class = "items">2 items</div>
+                        </div>
+                        <div class = "total-amount">$10.00</div>
+                        <!-- <div id = "running-total"><p>Subtotal: $0.00</p></div> -->
+                        <button class = "button">Checkout</button>
+                        <!-- <button id = "checkout-button">Checkout</button> -->
+                    </div>
+                </div>
+            </div>
+
+		<div class = "container" style = "background-color:#ffffff">
+			<button type = "button" onclick = "document.getElementById('ShoppingCart').style.display = 'none'" class = "cancelbutton"> Close </button>
+		</div>
+		</form>
+	</div> 
+
+
+	<!-- <div id = "LocationWindow" class = "login">
+		<form class = "login-contact animate">
+		  <div class = "container">
+		  <p>Here woudl be maps</p>
+		  <iframe src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.767862475269!2d-96.34350164904991!3d30.612310281589345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864683cfb6d8cfe5%3A0x92e1351d7a3258e2!2sChick-fil-A!5e0!3m2!1sen!2sus!4v1668030247482!5m2!1sen!2sus" width = "600" height = "450" style = "border:0;" allowfullscreen = "" loading = "lazy" referrerpolicy = "no-referrer-when-downgrade">	</iframe>
+		  </div>
+	  
+		  <div class = "container" style = "background-color:#ffffff">
+			<button type = "button" onclick = "document.getElementById('LocationWindow').style.display = 'none'" class = "cancelbutton"> Close </button>
+		  </div>
+		</form>
+	</div>
+
+    <div id = "FoodMenu" class = "login">
+		<form class = "login-contact animate">
+
+        <img id = "QRCodeImage" class = "qr-code-image" alt = "QR code image" 
+        src = "data:image/png;base64,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 = ">
+	  
+		<div class = "container" style = "background-color:#ffffff">
+			<button type = "button" onclick = "document.getElementById('FoodMenu').style.display = 'none'" class = "cancelbutton"> Close </button>
+		</div>
+		</form>
+	</div> -->
+
+	<!-- <script>
+		var login = document.getElementById('LoginWindow');
+
+		window.onclick = function(func) {
+			if (func.target == login) {
+				login.style.display = "none";
+			}
+		}
+	</script> -->
+
+</body>
+</html>

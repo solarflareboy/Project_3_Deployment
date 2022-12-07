@@ -1,0 +1,106 @@
+#inventory-items {
+    flex-grow: 2;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    overflow-y: scroll;
+    border-radius: 1rem 0 0 1rem;
+    max-height: calc(100% - 2rem);
+}
+
+.inventory-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #eee;
+    height: 4rem;
+    width: calc(50% - 0.5rem);
+    color: #000;
+}
+
+.ingredient-property {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 5rem;
+}
+
+.ingredient-name {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.property-name {
+    font-size: 0.8rem;
+}
+
+.property-value {
+    font-size: 1.1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 75%;
+    height: 100%;
+    text-align: center;
+    border-radius: 10rem;
+}
+
+#restock-window {
+    min-width: 20%;
+    max-width: 20%;
+    max-height: calc(100% - 2rem);
+}
+
+#restock-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+#restock-content {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+#restock-pre-message {
+    text-align: center;
+    width: 75%;
+}
+
+#restock-quantity {
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    border: 1px solid #aaa;
+    padding: 1rem;
+}
+
+#add-to-stock {
+    border-radius: 1rem;
+    height: 3rem;
+}
+
+#add-to-stock:enabled {
+    background-color: rgb(170, 255, 199);
+}
+
+#add-to-stock:disabled {
+    background-color: #eee;
+}
+
+#add-to-stock:hover:enabled {
+    background-color: var(--green-active);
+}
+
+.low-quantity {
+    background-color: rgb(255, 167, 167);
+}

@@ -1,0 +1,41 @@
+<html style="display: flex">
+    <head>
+        <link rel="stylesheet" href="../manager-gui.css">
+        <link rel="stylesheet" href="./employees.css">
+
+        <script src="./employees.js" type="module" defer></script>
+    </head>
+    <body class="popup-body">
+        <h2>Employees</h2>
+        <div class="popup-container">
+            <div id="employees-window" class="popup-category"></div>
+            <div id="modify-employee" class="popup-category">
+                <h3>Manage Employee</h3>
+                <div id="modify-area">
+                    <p id="modify-pre-message">Select an employee to get started!</p>
+                    <div id="modify-content">
+                        <h4 id="modify-employee-name" style="margin-bottom: 1rem;">Last, First (Employee)</h4>
+                        <p style="margin-bottom: 0.25rem;">First Name</p>
+                        <input type="text" id="first-name-input" value="First Name">
+                        <p style="margin-bottom: 0.25rem; margin-top: 1rem;">Last Name (Username)</p>
+                        <input type="text" id="last-name-input" value="Last Name" style="margin-bottom: 1.5rem;">
+                        <button class="confirm-button" id="confirm-changes">Save Changes</button>
+                        <button class="confirm-button" id="promote-employee">Promote Employee</button>
+                        <button class="confirm-button" id="fire-employee">Fire Employee</button>
+                    </div>
+                </div>
+            </div>
+            <div id="add-employee" class="popup-category">
+                <h3>Add Employee</h3>
+                <div id="add-area">
+                    <input type="text" id="add-employee-first-name" placeholder="First Name" style="margin-top: 1rem;">
+                    <input type="text" id="add-employee-last-name" placeholder="Last Name" style="margin-top: 1rem;">
+                    <input type="password" id="add-employee-password" placeholder="Password" style="margin-top: 1rem;">
+                    <input type="password" id="add-employee-password-confirm" placeholder="Confirm Password" style="margin-top: 1rem;">
+                    <p id="match-message"></p>
+                    <button class="confirm-button" id="confirm-add" disabled="true" style="margin-top: 1rem;">Add Employee</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

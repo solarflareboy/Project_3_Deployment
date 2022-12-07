@@ -3,6 +3,13 @@ import { request } from "../utils/client-requests.js";
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const showPasswordButton = document.getElementById("show-password");
+// let darkModeButton = document.querySelector('.darkMode')
+var inputPassword = document.getElementById("password_user");
+const warning = document.querySelector('.warning');
+
+// darkModeButton.addEventListener('click', () => {
+//   document.documentElement.classList.toggle('dark-mode')
+// })
 
 showPasswordButton.addEventListener("click", function() {
     var user_password = document.getElementById("password_user");
@@ -40,39 +47,18 @@ loginButton.addEventListener("click", async (event) => {
     }
 });
 
-const menuItems = document.getElementById("menu-items")
-const receipt = document.getElementById("receipt")
-const checkoutButton = document.getElementById("checkout-button")
-const addedProducts = []
+inputPassword.addEventListener("keypress", function(event) {
 
-async function populate() {
-    const products = await request("/menu-items")
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("login-form-submit").click();
+  }
+});
 
-    for (const product of products) {
-        const item = document.createElement("button")
-
-        item.innerText = product.product_name
-
-        menuItems.appendChild(item)
-
-        item.addEventListener("click", () => {
-            const item = document.createElement("div")
-
-            item.className = "menu-item"
-            item.innerText = product.product_name
-
-            receipt.appendChild(item)
-            addedProducts.push(product)
-        })
+inputPassword.addEventListener('keyup', function (e) {
+    if (e.getModifierState('CapsLock')) {
+        warning.textContent = 'Caps lock is on!!';
+    } else {
+        warning.textContent = '';
     }
-}
-
-checkoutButton.addEventListener("click", async () => {
-    const result = await request("/checkout", addedProducts)
-
-    alert(result)
-
-    window.location.href = "/"
-})
-
-populate()
+});

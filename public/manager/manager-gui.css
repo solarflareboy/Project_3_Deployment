@@ -1,4 +1,21 @@
-.managertop {
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Rubik", sans-serif;
+
+    --green-default: rgb(170, 255, 199);
+    --green-active: rgb(131, 255, 172);
+    --green-shadow: rgb(100, 255, 152);
+}
+
+body {
+    background-color: #eee;
+    overflow: hidden;
+}
+
+.managerTop {
 	overflow: hidden;
 	background-color: #303030;
 	text-align: right;
@@ -6,33 +23,98 @@
 }
 
 button {
-	background-color: #15aa04;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
+	background-color: #eee;
+	/* color: white; */
+	/* padding: 14px 20px;
+	margin: 8px 0; */
 	border: none;
-	cursor: pointer;
 	width: 100%;
 	height: 100%;
+    transition: all 150ms;
 }
 
 button:hover {
-	opacity: 0.8;
+	opacity: 1;
 }
 
-logoutbutton {
-	background-color: #c00000;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 8px;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	height: 100%;
+button:enabled {
+    cursor: pointer;
 }
 
-logoutbutton:hover {
-	opacity: 0.8;
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    height: 3rem;
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    padding: 1.0rem;
+    justify-content: flex-end;
+}
+
+#logout-button {
+    border: none;
+    background-color: rgb(255, 167, 167);
+    font-size: 1rem;
+    transition: all 150ms;
+    width: 8rem;
+    border-radius: 4rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    margin: 0;
+    margin-right: 1rem !important;
+    color: black;
+}
+
+#logout-button:hover {
+    background-color: rgb(255, 131, 131);
+    box-shadow: 0 0 1.5rem -0.5rem rgb(255, 131, 131);
+    scale: 1.03;
+}
+
+#logout-button:active {
+    background-color: rgb(255, 100, 100) !important;
+    scale: 1.01;
+}
+
+#logo img {
+    max-height: 100%;
+}
+
+#nav-space {
+    flex-grow: 1;
+}
+
+#manager-name {
+    margin-left: 1rem;
+    background-color: #eee;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem 0 2rem;
+}
+
+#translate {
+    border-radius: 5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    border: 1px solid #aaa;
+    padding: 15px;
+    background-color: #fff;
+}
+
+#translate div {
+    border: none !important;
 }
 
 xbutton {
@@ -45,15 +127,24 @@ xbutton {
 	height: 100%;
 }
 
-mgrname {
+managerNameLabel {
 	font-size: 20px;
 	color: white;
 	text-align: right;
 }
 
-.managermain {
+.managerMain {
 	padding: 16px 16px;
 	background-color: #eeeeee;
+}
+
+mainButton {
+	background-color: none;
+	color: white;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
 }
 
 .subwindow {
@@ -73,24 +164,24 @@ mgrname {
     padding-top: 60px;
 }
 
-.subwindow-title {
+.subwindowTitle {
 	width: 80%; 
 }
 
-.subwindow-top {
+.subwindowTop {
 	background-color: #303030;
 	color: white;
 	padding: 10px 10px;
 	text-align: center;
 }
 
-.subwindow-main {
+.subwindowMain {
 	background-color: #ffffff;
 	margin: 5% auto 15% auto; 
 	width: 80%; 
 }
 
-.subwindow-top {
+.subwindowTop {
 	overflow: hidden;
 	background-color: #303030;
 	text-align: right;
@@ -98,12 +189,7 @@ mgrname {
 	padding: 14px 16px;
 }
 
-.subwindow-table {
-	border-collapse: collapse;
-	width: 100%;
-}
-
-reportbutton {
+reportButton {
 	background-color: #15aa04;
 	color: white;
 	padding: 14px 20px;
@@ -114,6 +200,341 @@ reportbutton {
 	height: 100%;
 }
 
-reportbutton:hover {
+reportButton:hover {
 	opacity: 0.8;
+}
+
+.inventorySplit {
+	width: 50%;
+	background-color: #ffffff;
+}
+
+.popupwindow {
+	display: none; 
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%; 
+	overflow: auto;
+
+	/* shadow */
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.4); 
+
+	padding-top: 60px;
+}
+
+.popupwindowTop {
+	background-color: #303030;
+	color: white;
+	padding: 10px 10px;
+	text-align: right;
+}
+
+.popupwindowTitle {
+	width: 80%;
+}
+
+.popupwindowMain {
+	background-color: #ffffff;
+	margin: 5% auto 15% auto; 
+	width: 80%; 
+}
+
+.popupwindowHidden {
+	display: none; 
+}
+
+.item {
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    height: 50%;
+    position: relative;
+ 
+}
+
+.content {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+}
+
+.item:nth-child(1) { background: none; }
+.item:nth-child(2) { background: none; }
+.item:nth-child(3) { background: none; }
+.item:nth-child(4) { background: none; }
+
+.container-effect{
+	font: 0%;
+}
+
+.image {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+  
+.overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #dc2525;
+	overflow: hidden;
+	width: 100%;
+	height: 0;
+	transition: .5s ease;
+}
+  
+.container-effect:hover .overlay {
+	height: 100%;
+}
+  
+.text {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+#buttons-container {
+    background-color: #fff;
+    display: flex;
+    margin: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #aaa;
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.button-wrapper {
+    display: flex;
+    margin: 0;
+    padding: 0.5rem;
+    flex-basis: calc(50% - 1rem);
+}
+
+.manager-button {
+    background-color: #eee;
+    border-radius: 1rem;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-size: 1.25rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.manager-button:hover {
+    transform: scale(1.01) !important;
+}
+
+.manager-button:active:enabled {
+    transform: scale(0.99) !important;
+}
+
+button {
+    transition: all 150ms;
+    outline: none;
+}
+
+button:active:enabled {
+    transform: scale(1.01) !important;
+    background-color: var(--green-shadow) !important;
+}
+
+button:hover:enabled {
+    transform: scale(1.03);
+    box-shadow: 0 0 1.5rem -0.5rem var(--green-shadow);
+    background-color: var(--green-active);
+}
+
+#viewInventory {
+    background-image: url("../media/inventory-icon.png");
+}
+
+#viewProducts {
+    background-image: url("../media/products-icon.png");
+}
+
+#viewEmployees {
+    background-image: url("../media/employees-icon.png");
+}
+
+#viewReports {
+    background-image: url("../media/reports-icon.png");
+}
+
+#popup {
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fade-in 250ms;
+}
+
+@keyframes fade-in {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+#popup-window {
+    display: flex;
+    height: 75vh;
+    width: 75vw;
+    background-color: #fff;
+    border-radius: 1rem;
+    z-index: 1000;
+    animation: pop 250ms;
+    position: relative;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.01);
+    }
+
+    75% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#popup.closing {
+    animation: fade-out 250ms;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#popup.closing #popup-window {
+    opacity: 0;
+    transform: scale(0.01);
+    animation: unpop 250ms;
+}
+
+@keyframes fade-out {
+    0% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes unpop {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+}
+
+.popup-frame {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+}
+
+.popup-body {
+    background-color: #fff !important;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.popup-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    max-height: calc(100% - 2.5rem);
+}
+
+.popup-category {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 1rem;
+    flex-grow: 1;
+}
+
+#close-popup {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    right: 0;
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    cursor: pointer;
+    user-select: none;
+    transition: all 150ms;
+}
+
+#close-popup:hover {
+    color: #000;
+}
+
+#close-popup:active {
+    color: #444;
+    scale: 0.9;
+}
+
+#kiosk-view {
+    border: none;
+    background-color: var(--green-default);
+    font-size: 1rem;
+    width: 10rem;
+    border-radius: 4rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: all 150ms;
+}
+
+#kiosk-view:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 1.5rem -0.5rem var(--green-shadow);
+    background-color: var(--green-active);
+}
+
+#kiosk-view:active {
+    transform: scale(1.01) !important;
+    background-color: var(--green-active) !important;
 }

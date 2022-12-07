@@ -1,0 +1,27 @@
+<html style="display: flex">
+    <head>
+        <link rel="stylesheet" href="../manager-gui.css">
+        <link rel="stylesheet" href="./inventory.css">
+
+        <script src="./inventory.js" type="module" defer></script>
+    </head>
+    <body class="popup-body">
+        <h2>Inventory</h2>
+        <div class="popup-container">
+            <div id="inventory-items" class="popup-category"></div>
+            <div id="restock-window" class="popup-category">
+                <h3>Restock</h3>
+                <div id="restock-area">
+                    <p id="restock-pre-message">Select an ingredient to get started!</p>
+                    <div id="restock-content">
+                        <h4 id="restock-ingredient-name"></h4>
+                        <p id="threshold-message"></p>
+                        <p>Enter the amount to be added:</p>
+                        <input type="number" min="1" step="1" id="restock-quantity" placeholder="Quantity">
+                        <button id="add-to-stock" disabled="true">Add to Stock</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

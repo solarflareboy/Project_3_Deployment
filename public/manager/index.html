@@ -1,131 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name = "viewport" content = "width = device-width, initial-scale = 1">
-	<title> Chick-fil-B Manager View </title>
-	<link rel = "stylesheet" href = "manager-gui.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chick-fil-B - Manager</title>
+	<link rel="stylesheet" href="manager-gui.css">
 	<script src=manager-gui.js type="module" defer> </script>
     <link rel="icon" href="../media/icon.png" type="image/png">
 </head>
-
 <body>
-	<!-- <div id = "google_translate_functionality"> </div>
-	<script type = "text/javascript">
-		function googleTranslateFunctionality() {
-			new google.translate.TranslateElement(
-				{pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_functionality'
-			);
-		}
-	</script>
-	<script type = "text/javascript" src = "//translate.google.com/translate_a/element.js?cb=googleTranslateFunctionality"> </script> -->
-
-	<div class = "managertop">
-		<!-- Show manager's username -->
-		<mgrname id = "MgrNameLabel"> Mgrname </mgrname>
-
-		<!-- Log Out button takes you back to HomePage -->
-		<logoutbutton id = "logOut" style = "width:auto; "> Log Out </button>
-		
+    <div id="popup">
+        <div id="popup-window">
+            <div id="close-popup">✖</div>
+        </div>
+    </div>
+	<div class="container">
+        <div class="navbar">
+            <div id="logo">
+                <img src="../media/icon.png" alt="Chick-fil-B Logo">
+            </div>
+            <div id="manager-name">Manager: N/A</div>
+			<button id="kiosk-view">Kiosk View</button>
+            <div id="nav-space"></div>
+            <button id="logout-button">Log Out</button>
+            <div id="translate"></div>
+        </div>
+		<script>
+			function translate() {
+				new google.translate.TranslateElement({
+					pageLanguage: "en",
+					layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+				}, "translate");
+			}
+		</script>
+		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=translate"></script>
+        <div id="buttons-container">
+            <div class="button-wrapper"><button class="manager-button" id="viewInventory">View Inventory</button></div>
+            <div class="button-wrapper"><button class="manager-button" id="viewProducts">View Products</button></div>
+            <div class="button-wrapper"><button class="manager-button" id="viewReports">View Reports</button></div>
+            <div class="button-wrapper"><button class="manager-button" id="viewEmployees">View Employees</button></div>
+        </div>
 	</div>
-
-	<h1 style="text-align: center;">
-		<p style="font-size: 50px;">
-			<img src = "../media/icon.png" alt = "Chick-fil-B Logo" style = "width: 50px; height: 50px; display:inline;">
-			Manager View 
-		</p>
-	</h1>
-
-	<div class = "managermain">	
-		<button id = "viewInventory"> View Inventory </button>
-		<button id = "viewNewProductMaker"> New Product </button>
-		<button id = "viewReports"> View Reports </button>
-		<button id = "viewEmployees"> View Employees </button>
-	</div>
-
-	<div class = "subwindow" id = "inventorywindow">
-		<div class = "subwindow-top">
-			<div class = "subwindow-title"> Current Inventory </div>
-			<xbutton id = "closeInventory">
-				<img src="../media/redx.png" alt="Close" width="24px" >
-			</button>
-		</div>
-
-		<div class = "subwindow-main">
-			<table id="inventorytable">
-				<tr>
-					<th> Ingredient ID </th>
-					<th> Ingredient Name </th>
-					<th> Quantity </th>
-				</tr>
-			</table>
-		</div>
-	</div>
-
-	<div class = "subwindow" id = "reportswindow"> 
-		<div class = "subwindow-top">
-			<div class = "subwindow-title"> Reports </div>
-			<xbutton id = "closeReports">
-				<img src="../media/redx.png" alt = "Close" width = "24px">
-			</button>
-		</div>
-		
-		<div class = "subwindow-main">
-			<reportbutton id = "viewSalesReport"> Sales Report </reportbutton>
-			<reportbutton id = "viewExcessReport"> Excess Report </reportbutton>
-			<reportbutton id = "viewRestockReport"> Restock Report </reportbutton>
-			<reportbutton id = "viewTogetherReport"> What Sells Together </reportbutton>
-		</div>
-	</div>
-
-	<div class = "subwindow" id = "employeeswindow">
-		<div class = "subwindow-top">
-			<div class = "subwindow-title"> Employees </div>
-			<xbutton id = "closeEmployees">
-				<img src="../media/redx.png" alt="Close" width="24px">
-			</button>
-		</div>
-
-		<div class = "subwindow-main">
-			<reportbutton id = "addNewEmployee"> Add New Employee </reportbutton>
-			<reportbutton id = "removeEmployee"> Remove Employee </reportbutton>
-			<reportbutton id = "promoteEmployee"> Promote Employee </reportbutton>
-			<reportbutton id = "demoteEmployee"> Demote Employee </reportbutton>
-			<br><br>
-
-			<table id = "employeetable">
-				<tr>
-					<th> ID </th>
-					<th> First </th>
-					<th> Last </th>
-					<th> Is Manager </th>
-				</tr>
-			</table>
-		</div>
-	</div>
-
-	<div class = "subwindow" id = "newproductmakerwindow">
-		<div class = "subwindow-top">
-			<div class = "subwindow-title"> New Product </div>
-			<xbutton id = "closeNewProductMaker">
-				<img src="../media/redx.png" alt="Close" width="24px">
-			</button>
-		</div>
-
-		<div class = "subwindow-main">
-			<reportbutton id = "createNewProduct"> Create New Product </reportbutton>
-			<reportbutton id = "modifyProduct"> Modify Existing Product </reportbutton>
-
-			<br><br>
-
-			<table id = "productstable">
-				<tr>
-					<th> Product ID </th>
-					<th> Product Name </th>
-					<th> Price </th>
-				</tr>
-			</table>
-		</div>
-	</div>
-
 </body>
 </html>

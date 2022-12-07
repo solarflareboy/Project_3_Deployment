@@ -4,6 +4,7 @@ const menuItems = document.getElementById("menu-items")
 const receiptItems = document.getElementById("receipt-items")
 const checkoutButton = document.getElementById("checkout-button")
 const runningTotal = document.getElementById("running-total")
+const kioskView = document.getElementById("kiosk-view")
 const logoutButton = document.getElementById("logout-button")
 const addedProducts = []
 
@@ -11,7 +12,7 @@ let total = 0
 
 function updatePrice(newPrice) {
     total = Math.abs(newPrice)
-    runningTotal.innerHTML = `<p>Total: $${parseFloat(total).toFixed(2)}</p>`
+    runningTotal.innerHTML = `<p>Subtotal: $${parseFloat(total).toFixed(2)}</p>`
 }
 
 async function populate() {
@@ -56,7 +57,11 @@ checkoutButton.addEventListener("click", async () => {
 
     alert(result)
 
-    window.location.href = "/cashier"
+    window.location.reload()
+})
+
+kioskView.addEventListener("click", function() {
+    window.location.href = "/customer"
 })
 
 logoutButton.addEventListener("click", function() {
