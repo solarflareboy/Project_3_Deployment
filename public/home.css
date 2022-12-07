@@ -285,3 +285,13 @@ body {
     width: 350px;
     height: 350px;
 }
+
+#oauth-signin {
+    margin-top: 1rem;
+    border: 1px solid #aaa;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

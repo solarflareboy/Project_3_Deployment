@@ -1,91 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta name = "viewport" content = "width = device-width, initial-scale = 1">
-	<title>Chick-fil-B</title>
-	<link rel = "stylesheet" href = "home.css">
-	<script defer src = "home.js" type = "module"> </script>
-    <link rel = "icon" href = "./media/icon.png" type = "image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chick-fil-B</title>
+    <link rel="stylesheet" href="home.css">
+    <script defer src="home.js" type="module"></script>
+    <script src="./utils/oauth.js"></script>
+    <link rel="icon" href="./media/icon.png" type="image/png">
 </head>
 
 <body>
-	<div id = "container">
-		<div id = "navbar">
-			<img id = "logo" src = "../media/icon.png" alt = "Chick-fil-B Logo">
-			<h4 id = "chickfilb-name">Chick-fil-B</h4>
-			<button id = "location-button" class = "navbar-button" onclick = "document.getElementById('LocationWindow').style.display='block'">Location</button>
-            <button id = "food-menu" class = "navbar-button" onclick = "document.getElementById('FoodMenu').style.display='block'">Food Menu</button>
-			<div id = "nav-space"></div>
-			<div id = "translate"></div>
-		</div>
-
-		<div id = "background-image"></div>
-		<div id = "LoginWindow" class = "container-login">
-			<form id = "login-form" class = "login-content animate">
-				<h3 id = "login-text">LOGIN</h3>
-
-				<label for = "username" class = "input-label">
-					<b> Username </b>
-				</label>
-
-				<input type = "text" id = "name_user" placeholder = "Enter Username" name = "username"  class = "text-field" required>
-
-				<label for = "password" class = "input-label">
-					<b> Password </b>
-				</label>
-				<input type = "password" id = "password_user" placeholder = "Enter Password" name = "password" class = "text-field" required>
-				<div class = "below-password-bar">
-					<label>
-						<input type = "checkbox" id = "show-password"> Show Password
-					</label>
-					<div class = "caps-lock-warning"> <b> <div class = "warning"> </div> </b> </div>
-				</div>
-
-				<div class = "button_effect_ext_link" id = "login-form-submit" button type = "submit"> 
-					<div id = "button-effect"><p>Log in</p></div>
-				</div>
-
+    <div id="container">
+        <div id="navbar">
+            <img id="logo" src="../media/icon.png" alt="Chick-fil-B Logo">
+            <h4 id="chickfilb-name">Chick-fil-B</h4>
+            <button id="location-button" class="navbar-button" onclick="document.getElementById('LocationWindow').style.display='block'">Location</button>
+            <div id="nav-space"></div>
+            <div id="translate"></div>
+        </div>
+        <div id="background-image"></div>
+        <div id="LoginWindow" class="container-login">
+            <form id="login-form" class="login-content animate">
+                <h3 id="login-text">Log in</h3>
+                <label for="username" class="input-label">
+                    <b>Username</b>
+                </label>
 				<label>
-					<input type = "checkbox" checked = "checked" name = "remember"> Remember me
+					<input type="text" id="name_user" placeholder="Enter Username" name="username" class="text-field" required>
 				</label>
-			</form>
-		</div>
-	</div>
-
-	<script>
-		function googleTranslateFunctionality() {
-			new google.translate.TranslateElement({
-				pageLanguage: "en",
-				layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-			}, "translate");
-		}
-	</script>
-
-	<script type = "text/javascript" src = "//translate.google.com/translate_a/element.js?cb=googleTranslateFunctionality"></script>
-
-	<div id = "LocationWindow" class = "login">
-		<form class = "login-contact animate">
-			<div class = "container" style = "background-color:#e3b1b1">
-				<iframe src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.767862475269!2d-96.34350164904991!3d30.612310281589345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864683cfb6d8cfe5%3A0x92e1351d7a3258e2!2sChick-fil-A!5e0!3m2!1sen!2sus!4v1668030247482!5m2!1sen!2sus" width = "600" height = "450" style = "border:0;" allowfullscreen = "" loading = "lazy" referrerpolicy = "no-referrer-when-downgrade">	</iframe>
-		  	</div>
-
-		  	<div class = "container" style = "background-color:#ffffff">
-				<button type = "button" onclick = "document.getElementById('LocationWindow').style.display = 'none'" class = "cancelbutton"> Close </button>
-		  	</div>
-		</form>
-	</div>
-
-    <div id = "FoodMenu" class = "login">
-		<form class = "login-contact animate">
-			<div class = "container" style = "background-color:#e3b1b1">
-				<img id = "QRCodeImage" class = "qr-code-image" alt = "QR code image" src = "data:image/png;base64,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">
-			</div>
-		
-			<div class = "container" style = "background-color:#ffffff">
-				<button type = "button" onclick = "document.getElementById('FoodMenu').style.display = 'none'" class = "cancelbutton"> Close </button>
-			</div>
-		</form>
-	</div>
-    
+                <label for="password" class="input-label">
+                    <b>Password</b>
+                </label>
+				<label>
+					<input type="password" id="password_user" placeholder="Enter Password" name="password" class="text-field" required>
+				</label>
+                <div class="below-password-bar">
+                    <label>
+                        <input type="checkbox" id="show-password"> Show Password
+                    </label>
+                    <div class="caps-lock-warning">
+                        <b><div id="caps-warning"></div></b>
+                    </div>
+                </div>
+                <div class="button_effect_ext_link" id="login-form-submit" button type="submit">
+                    <div id="button-effect">
+                        <p>Log in</p>
+                    </div>
+                </div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+                <div id="oauth-signin" class="g_id_signin" data-type="standard"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function translate() {
+            new google.translate.TranslateElement({
+                pageLanguage: "en",
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, "translate");
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=translate"></script>
+    <div id="LocationWindow" class="login">
+        <form class="login-contact animate">
+            <div class="container" style="background-color:#e3b1b1">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.767862475269!2d-96.34350164904991!3d30.612310281589345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864683cfb6d8cfe5%3A0x92e1351d7a3258e2!2sChick-fil-A!5e0!3m2!1sen!2sus!4v1668030247482!5m2!1sen!2sus" width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="container" style="background-color:#ffffff">
+                <button type="button" onclick="document.getElementById('LocationWindow').style.display='none'" class="cancelbutton">
+                    Close
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <div id="g_id_onload" data-client_id="216348344513-jlfae7dsar40n6430c45431ds8gm71u3.apps.googleusercontent.com" data-callback="signInOAuth"></div>
 </body>
+
 </html>

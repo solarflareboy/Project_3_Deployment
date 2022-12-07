@@ -52,8 +52,18 @@ async function populate() {
     }
 }
 
+const employeeInfo = JSON.parse(localStorage.getItem("employeeInfo"))
+
+function getEmployeeId() {
+    if (employeeInfo) {
+        return employeeInfo.employee_id
+    } else {
+        return -1
+    }
+}
+
 checkoutButton.addEventListener("click", async () => {
-    const result = await request("/checkout", addedProducts)
+    const result = await request("/checkout", { products: addedProducts, employee_id: getEmployeeId() })
 
     alert(result)
 
@@ -64,8 +74,16 @@ kioskView.addEventListener("click", function() {
     window.location.href = "/customer"
 })
 
-logoutButton.addEventListener("click", function() {
-    window.location.href = "../"
+logoutButton.addEventListener("click", async function() {
+    localStorage.removeItem("employeeInfo")
+    await request("/logout")
+    window.location.href = "/"
 })
 
 populate()
+
+const cashierName = document.getElementById("cashier-name")
+
+if (employeeInfo) {
+    cashierName.innerText = `Cashier: ${employeeInfo.first_name} ${employeeInfo.last_name}`
+}

@@ -101,9 +101,7 @@ togetherReportButton.addEventListener("click", async function() {
         return;
     }
 
-    // TODO: Sells Together Report
-
-    const result = "SELLS_TOGETHER_REPORT_PLACEHOLDER";
+    const result = await request("/together-report", [startDate, endDate]);
 
     updateDisplay("content", result);
 })

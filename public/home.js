@@ -1,57 +1,51 @@
-import { request } from "../utils/client-requests.js";
+import { request } from "../utils/client-requests.js"
 
-const loginForm = document.getElementById("login-form");
-const loginButton = document.getElementById("login-form-submit");
-const showPasswordButton = document.getElementById("show-password");
-var inputPassword = document.getElementById("password_user");
-const warning = document.querySelector('.warning');
+const loginForm = document.getElementById("login-form")
+const loginButton = document.getElementById("login-form-submit")
+const showPasswordButton = document.getElementById("show-password")
+const inputPassword = document.getElementById("password_user")
+const capsWarning = document.getElementById("caps-warning")
 
-showPasswordButton.addEventListener("click", function() {
-    var user_password = document.getElementById("password_user");
+showPasswordButton.addEventListener("click", function () {
+    var user_password = document.getElementById("password_user")
     if (user_password.type == "password") {
-        user_password.type = "text";
+        user_password.type = "text"
     } else {
-        user_password.type = "password";
+        user_password.type = "password"
     }
-});
+})
 
 loginButton.addEventListener("click", async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
+    const username = loginForm.username.value
+    const password = loginForm.password.value
+    const employeeInfo = await request("/login", { username, password })
 
-    const response = await request("/login", { username, password });
-
-    console.log(response);
-
-    switch (response) {
-        // TODO: successful login will have cookie attached so only authenticated users can access pages
-
-        case "LOGIN_MANAGER":
-            window.location.href = "/manager";
-            break;
-
-        case "LOGIN_CASHIER":
-            window.location.href = "/cashier";
-            break;
-
-        default: // LOGIN_FAILED
-            alert("Error: Username or Password is incorrect.");
+    if (!employeeInfo) {
+        alert("Error: Username or Password is incorrect.")
     }
-});
 
-inputPassword.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("login-form-submit").click();
-    }
-});
+    localStorage.setItem("employeeInfo", JSON.stringify(employeeInfo))
 
-inputPassword.addEventListener('keyup', function(e) {
-    if (e.getModifierState('CapsLock')) {
-        warning.textContent = 'Caps lock is on!!';
+    if (employeeInfo.employee_type === "manager") {
+        window.location.href = "/manager"
     } else {
-        warning.textContent = '';
+        window.location.href = "/cashier"
     }
-});
+})
+
+inputPassword.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault()
+        document.getElementById("login-form-submit").click()
+    }
+})
+
+inputPassword.addEventListener("keyup", function (e) {
+    if (e.getModifierState("CapsLock")) {
+        capsWarning.textContent = "Caps lock is on!!"
+    } else {
+        capsWarning.textContent = ""
+    }
+})

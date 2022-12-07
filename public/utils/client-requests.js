@@ -29,5 +29,5 @@ export async function request(url, content) {
         }
     } catch (err) {}
 
-    return data;
+    return data
 }

@@ -17,3 +17,6 @@ users.csv
 # DB login
 db_login.cmd
 db-login.cmd
+
+# Auto-documentation
+out

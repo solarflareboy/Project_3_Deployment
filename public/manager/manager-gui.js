@@ -9,11 +9,18 @@ kioskView.addEventListener("click", function() {
     window.location.href = "/customer";
 })
 
-logoutButton.addEventListener("click", function() {
-    window.location.href = "../";
+logoutButton.addEventListener("click", async function() {
+    localStorage.removeItem("employeeInfo")
+    await request("/logout")
+    window.location.href = "/"
 })
 
-// TODO: Get the manager username that they inputted when they logged in
+const managerName = document.getElementById("manager-name")
+const employeeInfo = JSON.parse(localStorage.getItem("employeeInfo"))
+
+if (employeeInfo) {
+    managerName.innerText = `Manager: ${employeeInfo.first_name} ${employeeInfo.last_name}`
+}
 
 function openPopup(popupType) {
     const frame = document.createElement("iframe");

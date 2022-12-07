@@ -15,6 +15,7 @@
                 <img src = "../media/icon.png" alt = "Chick-fil-B Logo">
             </div>
 			<h4 id = "chickfilb-name">Chick-fil-B</h4>
+            <button id = "login-button" class = "navbar-button" onclick = "document.getElementById('LoginWindow').style.display='block'">Login</button>
             <div id = "nav-space"></div>
             <div id = "translate"></div>
         </div>
@@ -45,5 +46,59 @@
 	</script>
 
 	<script type = "text/javascript" src = "//translate.google.com/translate_a/element.js?cb=googleTranslateFunctionality"></script>
+
+    <div id = "LoginWindow" class = "login">
+        <form id = "login-form" class = "login-content animate">
+           <div class = "container" style = "background-color:#ffffff">
+
+				<h3 id = "login-text">LOGIN</h3>
+
+                <br>
+
+				<label for = "username" class = "input-label">
+					<b> Username </b>
+				</label>
+
+                <input type = "text" id = "name_user" placeholder = "Enter Username" name = "username"  class = "text-field" required>
+
+				<label for = "password" class = "input-label">
+					<b> Password </b>
+				</label>
+				<input type = "password" id = "password_user" placeholder = "Enter Password" name = "password" class = "text-field" required>
+				<div class = "below-password-bar">
+					<label>
+						<input type = "checkbox" id = "show-password"> Show Password
+					</label>
+					<div class = "caps-lock-warning"> <b> <div class = "warning"> </div> </b> </div>
+				</div>
+
+                <br><br>
+
+                <div class = "button_effect_ext_link" id = "login-form-submit" button type = "submit"> 
+					<div id = "button-effect"><p>Log in</p></div>
+				</div>
+
+				<label>
+					<input type = "checkbox" checked = "checked" name = "remember"> Remember me
+				</label>
+
+                <br>
+
+                <button type = "button" onclick = "document.getElementById('LoginWindow').style.display = 'none'" class = "cancelbutton"> Close </button>
+
+            </div>
+        </form>  
+	</div>
+
+    <script>
+        var screen = document.getElementById('LoginWindow');
+
+        window.onclick = function(event) {
+            if (event.target == screen) {
+                screen.style.display = "none";
+            }
+        }
+    </script>
+
 </body>
 </html>
