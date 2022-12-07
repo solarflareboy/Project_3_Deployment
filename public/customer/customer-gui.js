@@ -1,20 +1,20 @@
 import { request } from "../utils/client-requests.js";
 
-const menuItems = document.getElementById("menu-items")
-const receipt = document.getElementById("receipt")
-const checkoutButton = document.getElementById("checkout-button")
-const receiptItems = document.getElementById("receipt-items")
-const runningTotal = document.getElementById("running-total")
-const categories = document.getElementById("categories")
+const menuItems = document.getElementById("menu-items");
+const receipt = document.getElementById("receipt");
+const checkoutButton = document.getElementById("checkout-button");
+const receiptItems = document.getElementById("receipt-items");
+const runningTotal = document.getElementById("running-total");
+const categories = document.getElementById("categories");
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const showPasswordButton = document.getElementById("show-password");
 var inputPassword = document.getElementById("password_user");
 const warning = document.querySelector('.warning');
 
-const addedProducts = []
+const addedProducts = [];
 
-let total = 0
+let total = 0;
 
 function updatePrice(newPrice) {
     total = Math.abs(newPrice);
@@ -110,7 +110,7 @@ async function populate() {
 checkoutButton.addEventListener("click", async () => {
     const result = await request("/checkout", { products: addedProducts });
 
-    alert(result)
+    alert(result);
 
     // Clear the receipt
     receiptItems.innerHTML = "";

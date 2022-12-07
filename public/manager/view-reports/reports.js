@@ -33,7 +33,7 @@ setCurrentReport(reportSelect.value);
 reportSelect.addEventListener("change", function() {
     setCurrentReport(reportSelect.value);
     updateDisplay("notification", defaultMessage);
-})
+});
 
 // Sales Report
 
@@ -47,13 +47,13 @@ salesReportButton.addEventListener("click", async function() {
 
     if (!startDate || !endDate) {
         updateDisplay("notification", "Please specify a start and end date.");
-        return
+        return;
     }
 
     const result = await request("/sales-report", [startDate, endDate]);
 
     updateDisplay("content", result);
-})
+});
 
 // Excess Report
 
@@ -65,7 +65,7 @@ excessReportButton.addEventListener("click", async function() {
 
     if (!timestamp) {
         updateDisplay("notification", "Please specify a timestamp.");
-        return
+        return;
     }
 
     // TODO: Excess Report
@@ -74,7 +74,7 @@ excessReportButton.addEventListener("click", async function() {
     })
 
     updateDisplay("content", result);
-})
+});
 
 // Restock Report
 
@@ -84,7 +84,7 @@ restockReportButton.addEventListener("click", async function() {
     const result = await request("/restock-report");
 
     updateDisplay("content", result);
-})
+});
 
 // Sells Together Report
 
@@ -104,4 +104,4 @@ togetherReportButton.addEventListener("click", async function() {
     const result = await request("/together-report", [startDate, endDate]);
 
     updateDisplay("content", result);
-})
+});

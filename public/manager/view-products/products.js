@@ -22,7 +22,7 @@ confirmChanges.addEventListener("click", async function() {
         product_id: currentProduct.product_id,
         product_name: modifyProductNameInput.value,
         price: modifyProductPriceInput.value
-    })
+    });
 
     modifyPreMessage.innerText = `Successfully saved ${modifyProductNameInput.value} with price $${modifyProductPriceInput.value}.`;
     modifyPreMessage.style.display = "flex";
@@ -106,7 +106,7 @@ async function populateProducts() {
 
         item.addEventListener("click", function() {
             setCurrentProduct(product);
-        })
+        });
 
         productItems.appendChild(item);
     }
@@ -154,7 +154,7 @@ async function setupIngredients() {
             }
 
             updateButton();
-        })
+        });
     }
 }
 
@@ -171,10 +171,10 @@ confirmCreate.addEventListener("click", async function() {
         price: price,
         product_type: type,
         ingredients: checked
-    })
+    });
 
     populateProducts();
-})
+});
 
 populateProducts();
 setupIngredients();

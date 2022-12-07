@@ -1,22 +1,22 @@
-const fs = require("fs")
-const path = require("path")
-const express = require("express")
-const app = express()
-const { Pool } = require("pg")
-const cookieParser = require("cookie-parser")
-const crypto = require("crypto")
+const fs = require("fs");
+const path = require("path");
+const express = require("express");
+const app = express();
+const { Pool } = require("pg");
+const cookieParser = require("cookie-parser");
+const crypto = require("crypto");
 
 // Load the dotenv data into this process's environment
 require('dotenv').config();
 
 // The port and a connection pool to the database
 const port = 8000 | process.env.PORT
-const dbreq = require('./src/db-requests')
-const pool = dbreq.createPool()
+const dbreq = require('./src/db-requests');
+const pool = dbreq.createPool();
 
 // OAuth
-const { OAuth2Client } = require("google-auth-library")
-const client = new OAuth2Client(process.env.CLIENT_ID)
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client(process.env.CLIENT_ID);
 
 // Allow JSON objects to be passed through requests
 app.use(express.json());
@@ -32,33 +32,33 @@ app.listen(port, () => {
 app.use(cookieParser())
 
 app.post("/oauth-signin", async (req, res) => {
-    const token = req.body.token
+    const token = req.body.token;
 
     const ticket = await client.verifyIdToken({
         idToken: token,
         audience: process.env.CLIENT_ID
-    })
+    });
 
-    const payload = ticket.getPayload()
-    const existing = await pool.query(`SELECT * FROM employees WHERE oauth_email = '${payload.email}';`)
-    const user = existing.rows[0]
+    const payload = ticket.getPayload();
+    const existing = await pool.query(`SELECT * FROM employees WHERE oauth_email = '${payload.email}';`);
+    const user = existing.rows[0];
 
     if (user) {
-        res.cookie("session-token", token)
+        res.cookie("session-token", token);
         res.send({
             employee_id: user.employee_id,
             first_name: user.first_name,
             last_name: user.last_name,
             employee_type: user.is_manager ? "manager" : "cashier"
-        })
+        });
     } else {
-        res.send(null)
+        res.send(null);
     }
 })
 
 app.get("/logout", (req, res) => {
-    res.clearCookie("session-token")
-    res.redirect("/")
+    res.clearCookie("session-token");
+    res.redirect("/");
 })
 
 
@@ -167,21 +167,19 @@ app.post("/login", (req, res) => {
     
     dbreq.attemptLogin(pool, username, password).then(employeeInfo => {
         if (!employeeInfo) {
-            res.send(null)
-
-            return
+            res.send(null);
+            return;
         }
 
-        const token = crypto.createHash("sha256").update(`${username}:${password}`).digest("base64")
+        const token = crypto.createHash("sha256").update(`${username}:${password}`).digest("base64");
 
-        res.cookie("session-token", token)
-        res.send(employeeInfo)
+        res.cookie("session-token", token);
+        res.send(employeeInfo);
     })
 })
 
 app.post("/checkout", async (req, res) => {
     const data = req.body;
-
     await dbreq.submitOrder(pool, data.products, data.employee_id ? data.employee_id : -1)
 
     res.send("Checkout successful!");

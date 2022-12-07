@@ -7,12 +7,12 @@ const kioskView = document.getElementById("kiosk-view");
 
 kioskView.addEventListener("click", function() {
     window.location.href = "/customer";
-})
+});
 
 logoutButton.addEventListener("click", async function() {
-    localStorage.removeItem("employeeInfo")
-    await request("/logout")
-    window.location.href = "/"
+    localStorage.removeItem("employeeInfo");
+    await request("/logout");
+    window.location.href = "/";
 })
 
 const managerName = document.getElementById("manager-name")

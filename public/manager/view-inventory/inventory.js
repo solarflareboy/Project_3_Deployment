@@ -108,7 +108,7 @@ async function populateInventory() {
 
         item.addEventListener("click", function() {
             setRestockIngredient(ingredient);
-        })
+        });
 
         inventoryItems.appendChild(item);
     }

@@ -21,7 +21,7 @@ function createPool() {
 
         console.log("The application has shut down.");
         process.exit(0);
-    })
+    });
 
     return pool;
 }
