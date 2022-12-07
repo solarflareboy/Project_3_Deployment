@@ -1,94 +1,94 @@
 import { request } from "../../utils/client-requests.js"
 
-const inventoryItems = document.getElementById("inventory-items")
-const restockContent = document.getElementById("restock-content")
-const restockPreMessage = document.getElementById("restock-pre-message")
-const restockIngredientName = document.getElementById("restock-ingredient-name")
-const addToStock = document.getElementById("add-to-stock")
-const restockQuantity = document.getElementById("restock-quantity")
-const thresholdMessage = document.getElementById("threshold-message")
+const inventoryItems = document.getElementById("inventory-items");
+const restockContent = document.getElementById("restock-content");
+const restockPreMessage = document.getElementById("restock-pre-message");
+const restockIngredientName = document.getElementById("restock-ingredient-name");
+const addToStock = document.getElementById("add-to-stock");
+const restockQuantity = document.getElementById("restock-quantity");
+const thresholdMessage = document.getElementById("threshold-message");
 
 function addCommaToNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 let currentIngredient = null
 
 async function restockIngredient(ingredient, amount) {
-    const currentAmount = ingredient.quantity
+    const currentAmount = ingredient.quantity;
 
     if (amount <= 0) {
-        return
+        return;
     }
 
-    const newAmount = parseInt(currentAmount) + amount
+    const newAmount = parseInt(currentAmount) + amount;
 
     const result = await request("/restock-ingredient", {
         id: `'${ingredient.ingredient_id}'`,
         amount: newAmount
     })
 
-    await populateInventory()
+    await populateInventory();
 
-    restockPreMessage.innerText = `${ingredient.ingredient_name} has been restocked to ${addCommaToNumber(newAmount)}.`
-    restockPreMessage.style.display = "flex"
-    restockContent.style.display = "none"
+    restockPreMessage.innerText = `${ingredient.ingredient_name} has been restocked to ${addCommaToNumber(newAmount)}.`;
+    restockPreMessage.style.display = "flex";
+    restockContent.style.display = "none";
 }
 
 function setRestockIngredient(ingredient) {
-    restockPreMessage.style.display = "none"
-    restockIngredientName.innerText = `Restock ${ingredient.ingredient_name}`
-    thresholdMessage.innerText = `${ingredient.quantity < ingredient.minimum ? "This ingredient is low on stock! " : ""}Threshold: ${addCommaToNumber(ingredient.minimum)}`
-    restockContent.style.display = "flex"
+    restockPreMessage.style.display = "none";
+    restockIngredientName.innerText = `Restock ${ingredient.ingredient_name}`;
+    thresholdMessage.innerText = `${ingredient.quantity < ingredient.minimum ? "This ingredient is low on stock! " : ""}Threshold: ${addCommaToNumber(ingredient.minimum)}`;
+    restockContent.style.display = "flex";
     
-    currentIngredient = ingredient
+    currentIngredient = ingredient;
 }
 
 addToStock.addEventListener("click", async function() {
-    const amount = restockQuantity.value
+    const amount = restockQuantity.value;
 
     if (amount == "") {
-        return
+        return;
     }
 
-    await restockIngredient(currentIngredient, parseInt(amount))
+    await restockIngredient(currentIngredient, parseInt(amount));
 })
 
 restockQuantity.addEventListener("keydown", function(event) {
     if (event.keyCode == 13) {
-        addToStock.click()
+        addToStock.click();
     }
 })
 
 function removeNonIntegerInput(value) {
-    return value.replace(/\D/g, "")
+    return value.replace(/\D/g, "");
 }
 
 restockQuantity.addEventListener("input", function() {
-    restockQuantity.value = removeNonIntegerInput(restockQuantity.value)
+    restockQuantity.value = removeNonIntegerInput(restockQuantity.value);
 
     if (this.value.length > 0) {
-        addToStock.disabled = false
+        addToStock.disabled = false;
     } else {
-        addToStock.disabled = true
+        addToStock.disabled = true;
     }
 })
 
 async function populateInventory() {
     while (inventoryItems.firstChild) {
-        inventoryItems.removeChild(inventoryItems.firstChild)
+        inventoryItems.removeChild(inventoryItems.firstChild);
     }
 
-    const inventory = await request("/get-inventory")
+    const inventory = await request("/get-inventory");
 
     for (const ingredient of inventory) {
         if (ingredient.ingredient_name === "null") {
-            continue
+            continue;
         }
 
-        const item = document.createElement("button")
+        const item = document.createElement("button");
 
-        item.classList.add("inventory-item")
+        item.classList.add("inventory-item");
 
         item.innerHTML = `
             <p class="ingredient-name">${ingredient.ingredient_name}</p>
@@ -100,18 +100,18 @@ async function populateInventory() {
                 <p class="property-name">Quantity</p>
                 <p class="property-value">${addCommaToNumber(ingredient.quantity)}</p>
             </div>
-        `
+        `;
 
         if (ingredient.quantity < ingredient.minimum) {
-            item.classList.add("low-quantity")
+            item.classList.add("low-quantity");
         }
 
         item.addEventListener("click", function() {
-            setRestockIngredient(ingredient)
+            setRestockIngredient(ingredient);
         })
 
-        inventoryItems.appendChild(item)
+        inventoryItems.appendChild(item);
     }
 }
 
-populateInventory()
+populateInventory();

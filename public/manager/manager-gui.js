@@ -1,76 +1,76 @@
 import { request } from "../utils/client-requests.js"
 
-const popup = document.getElementById("popup")
-const popupWindow = document.getElementById("popup-window")
-const logoutButton = document.getElementById("logout-button")
+const popup = document.getElementById("popup");
+const popupWindow = document.getElementById("popup-window");
+const logoutButton = document.getElementById("logout-button");
 const kioskView = document.getElementById("kiosk-view");
 
 kioskView.addEventListener("click", function() {
-    window.location.href = "/customer"
+    window.location.href = "/customer";
 })
 
 logoutButton.addEventListener("click", function() {
-    window.location.href = "../"
+    window.location.href = "../";
 })
 
 // TODO: Get the manager username that they inputted when they logged in
 
 function openPopup(popupType) {
-    const frame = document.createElement("iframe")
+    const frame = document.createElement("iframe");
 
-    frame.classList.add("popup-frame")
-    frame.src = `./view-${popupType}/${popupType}.html`
+    frame.classList.add("popup-frame");
+    frame.src = `./view-${popupType}/${popupType}.html`;
 
-    const children = popupWindow.children
+    const children = popupWindow.children;
 
     for (let i = 0; i < children.length; i++) {
         if (children[i].id !== "close-popup") {
-            popupWindow.removeChild(children[i])
+            popupWindow.removeChild(children[i]);
         }
     }
     
     if (frame) {
-        popupWindow.appendChild(frame)
+        popupWindow.appendChild(frame);
     }
 
-    popup.style.display = "flex"
+    popup.style.display = "flex";
 }
 
-let isClosing = false
+let isClosing = false;
 
 function closePopup() {
     if (isClosing) {
-        return
+        return;
     }
 
-    isClosing = true
+    isClosing = true;
 
-    popup.classList.add("closing")
+    popup.classList.add("closing");
 
     setTimeout(() => {
-        popup.style.display = "none"
-        popup.classList.remove("closing")
+        popup.style.display = "none";
+        popup.classList.remove("closing");
 
-        isClosing = false
-    }, 275)
+        isClosing = false;
+    }, 275);
 }
 
-document.getElementById("close-popup").addEventListener("click", closePopup)
-document.getElementById("viewInventory").addEventListener("click", () => openPopup("inventory"))
-document.getElementById("viewProducts").addEventListener("click", () => openPopup("products"))
-document.getElementById("viewReports").addEventListener("click", () => openPopup("reports"))
-document.getElementById("viewEmployees").addEventListener("click", () => openPopup("employees"))
+document.getElementById("close-popup").addEventListener("click", closePopup);
+document.getElementById("viewInventory").addEventListener("click", () => openPopup("inventory"));
+document.getElementById("viewProducts").addEventListener("click", () => openPopup("products"));
+document.getElementById("viewReports").addEventListener("click", () => openPopup("reports"));
+document.getElementById("viewEmployees").addEventListener("click", () => openPopup("employees"));
 
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
-        closePopup()
+        closePopup();
     }
 })
 
 popup.addEventListener("click", function(event) {
-    const { target } = event
+    const { target } = event;
 
     if (target.id === "popup") {
-        closePopup()
+        closePopup();
     }
 })

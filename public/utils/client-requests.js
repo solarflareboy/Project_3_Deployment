@@ -4,31 +4,30 @@ export async function request(url, content) {
     const requestObject = { method }
 
     if (!content) {
-        requestObject.method = "GET"
+        requestObject.method = "GET";
     } else {
-        requestObject.method = "POST"
+        requestObject.method = "POST";
 
         if (typeof content === "string") {
             requestObject.headers = { "Content-Type": "application/text" }
-            requestObject.body = content
+            requestObject.body = content;
         } else {
-            const json = JSON.stringify(content)
+            const json = JSON.stringify(content);
 
             requestObject.headers = { "Content-Type": "application/json" }
-            requestObject.body = json
+            requestObject.body = json;
         }
     }
 
-    const response = await fetch(url, requestObject)
-    const data = await response.text()
+    const response = await fetch(url, requestObject);
+    const data = await response.text();
 
     try {
-        const json = JSON.parse(data)
-
+        const json = JSON.parse(data);
         if (json) {
-            return json
+            return json;
         }
-    } catch (err) { }
+    } catch (err) {}
 
-    return data
+    return data;
 }

@@ -3,13 +3,8 @@ import { request } from "../utils/client-requests.js";
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const showPasswordButton = document.getElementById("show-password");
-// let darkModeButton = document.querySelector('.darkMode')
 var inputPassword = document.getElementById("password_user");
 const warning = document.querySelector('.warning');
-
-// darkModeButton.addEventListener('click', () => {
-//   document.documentElement.classList.toggle('dark-mode')
-// })
 
 showPasswordButton.addEventListener("click", function() {
     var user_password = document.getElementById("password_user");
@@ -26,15 +21,14 @@ loginButton.addEventListener("click", async (event) => {
     const username = loginForm.username.value;
     const password = loginForm.password.value;
 
-    const response = await request("/login", { username, password })
+    const response = await request("/login", { username, password });
 
-    console.log(response)
+    console.log(response);
 
     switch (response) {
         // TODO: successful login will have cookie attached so only authenticated users can access pages
 
         case "LOGIN_MANAGER":
-            console.log("fdsaf")
             window.location.href = "/manager";
             break;
 
@@ -48,14 +42,13 @@ loginButton.addEventListener("click", async (event) => {
 });
 
 inputPassword.addEventListener("keypress", function(event) {
-
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("login-form-submit").click();
-  }
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("login-form-submit").click();
+    }
 });
 
-inputPassword.addEventListener('keyup', function (e) {
+inputPassword.addEventListener('keyup', function(e) {
     if (e.getModifierState('CapsLock')) {
         warning.textContent = 'Caps lock is on!!';
     } else {

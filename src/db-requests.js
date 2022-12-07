@@ -18,10 +18,10 @@ function createPool() {
 
     // Add process hook to shutdown pool after using all queries (end of program)
     process.on("SIGINT", function () {
-        pool.end()
+        pool.end();
 
-        console.log("The application has shut down.")
-        process.exit(0)
+        console.log("The application has shut down.");
+        process.exit(0);
     })
 
     return pool;
@@ -115,13 +115,13 @@ async function decreaseInventory(pool, product){
     try {
         const res = await pool.query("SELECT ingredient_id, quantity FROM products JOIN products_to_ingredients " +
         "ON products.product_id = products_to_ingredients.product_id WHERE products.product_id = '" + product.product_id + "';");
-        var ingredientID = res.rows[0].ingredient_id
-        var quantityToDecrease = res.rows[0].quantity
+        var ingredientID = res.rows[0].ingredient_id;
+        var quantityToDecrease = res.rows[0].quantity;
 
         const quantityRes = await pool.query("SELECT quantity FROM inventory WHERE ingredient_id = '" + ingredientID + "';");
-        var currentQuantity = quantityRes.rows[0].quantity
+        var currentQuantity = quantityRes.rows[0].quantity;
         if (currentQuantity <= 0) {
-            return
+            return;
         }
         await pool.query("UPDATE inventory SET quantity = " + (currentQuantity - quantityToDecrease) + " WHERE ingredient_id = '" 
         + ingredientID + "';");
@@ -197,10 +197,12 @@ async function addProduct(pool, ingredient_id_list, product_id, product_name, pr
         }
         await pool.query("INSERT INTO products(product_id, product_name, price, product_type) " +
         "VALUES (" + product_id + ", '" + product_name + "', " + price + ",'" + product_type + "');");
+        
         for (let i = 0; i < ingredient_id_list.length; i++) {
             await pool.query("INSERT INTO products_to_ingredients(product_id, ingredient_id, quantity) VALUES ("
             + product_id + ", '" + ingredient_id_list[i] + "', " + 1.0 + ");");
         }
+
         console.log("PRODUCT ADDED");
     } catch (err) {
         return err.stack;
@@ -350,7 +352,7 @@ async function restockReport(pool) {
     try {
         const restockQuery = await pool.query("SELECT * FROM inventory WHERE quantity < minimum");
         var report = "Name, Quantity, Minimum<br>";
-        for (let i = 0; i < restockQuery.rows.length; i++){
+        for (let i = 0; i < restockQuery.rows.length; i++) {
             report += restockQuery.rows[i].ingredient_name + ", ";
             report += restockQuery.rows[i].quantity + ", ";
             report += restockQuery.rows[i].minimum;
@@ -369,7 +371,7 @@ async function restockReport(pool) {
 * @return String showing which ingredients are in excess, if any
 */
 async function excessReport(pool, start_date) {
-    try{
+    try {
         var products = "";
         var productList = [];
         var ingredientSalescount = {};
@@ -400,7 +402,6 @@ async function excessReport(pool, start_date) {
 
                 if (ingredientSalescount[ingredient_info.rows[0].ingredient_id]) {
                     ingredientSalescount[ingredient_info.rows[0].ingredient_id] += ingredient_info.rows[0].quantity;
-                    
                 } else {
                     ingredientSalescount[ingredient_info.rows[0].ingredient_id] = ingredient_info.rows[0].quantity;
                 }
@@ -408,7 +409,7 @@ async function excessReport(pool, start_date) {
         }
         
         for (let i = 0; i < Object.keys(ingredientSalescount).length; i++) {
-            var key = Object.keys(ingredientSalescount)[i]
+            var key = Object.keys(ingredientSalescount)[i];
             const quantityRequest = await pool.query("SELECT quantity FROM inventory WHERE ingredient_id = '" + key + "';");
                 if(quantityRequest.rowCount != 0){
                     var quantity = quantityRequest.rows[0].quantity + Object.values(ingredientSalescount)[i]
@@ -437,6 +438,5 @@ module.exports = {
     removeEmployee,
     promoteEmployee,
     salesReport,
-    restockReport,
-    excessReport
+    restockReport
 }
