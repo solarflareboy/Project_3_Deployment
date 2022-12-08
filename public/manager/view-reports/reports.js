@@ -5,6 +5,11 @@ const defaultMessage = preMessage.innerText;
 const resultsText = document.getElementById("results-text");
 const reportSelect = document.getElementById("report-select");
 
+/**
+ * Sets the display to either show a notification or the results of a report.
+ * @param {String} type The type of display to show. Either "notification" or "content".
+ * @param {*} message The content to display.
+ */
 function updateDisplay(type, message) {
     if (type === "notification") {
         preMessage.innerHTML = message;
@@ -19,6 +24,10 @@ function updateDisplay(type, message) {
 
 let currentReport;
 
+/**
+ * Selects the report to display.
+ * @param {String} reportName The type of the report to display.
+ */
 function setCurrentReport(reportName) {
     if (currentReport) {
         currentReport.style.display = "none";

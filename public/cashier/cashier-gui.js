@@ -10,11 +10,18 @@ const addedProducts = [];
 
 let total = 0;
 
+/**
+ * Updates price
+ * @param newPrice Price that it should be updated to
+ */
 function updatePrice(newPrice) {
     total = Math.abs(newPrice);
     runningTotal.innerHTML = `<p>Subtotal: $${parseFloat(total).toFixed(2)}</p>`;
 }
 
+/**
+ * Populates menu item buttons
+ */
 async function populate() {
     const products = await request("/menu-items");
 
@@ -54,6 +61,10 @@ async function populate() {
 
 const employeeInfo = JSON.parse(localStorage.getItem("employeeInfo"));
 
+/**
+ * Gets the ID of the current employee
+ * @returns Current employee info
+ */
 function getEmployeeId() {
     if (employeeInfo) {
         return employeeInfo.employee_id;

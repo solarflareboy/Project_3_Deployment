@@ -13,10 +13,16 @@ const ingredientsItems = document.getElementById("ingredients-items");
 let inventory = null;
 let currentProduct = null;
 
+/**
+ * Converts a number to a string with two decimal places.
+ * @param {Number} num The number to convert.
+ * @returns {String} The converted number.
+ */
 function convertToDollars(num) {
     return parseFloat(num).toFixed(2);
 }
 
+// Saves the changes made to the currently-selected product.
 confirmChanges.addEventListener("click", async function() {
     await request("/modify-product", {
         product_id: currentProduct.product_id,
@@ -31,8 +37,10 @@ confirmChanges.addEventListener("click", async function() {
     populateProducts();
 })
 
+// Removes the currently-selected product.
 removeProduct.addEventListener("click", async function() {
-    var id = currentProduct.product_id;
+    const id = currentProduct.product_id;
+
     await request("/remove-product", {
         product_id: id
     })
@@ -48,6 +56,10 @@ modifyProductPriceInput.addEventListener("input", function() {
     modifyProductPriceInput.value = convertToDollars(modifyProductPriceInput.value);
 })
 
+/**
+ * Sets the currently-selected product.
+ * @param {Product} product The product to set as the currently-selected product.
+ */
 function setCurrentProduct(product) {
     currentProduct = product;
 
@@ -61,10 +73,18 @@ function setCurrentProduct(product) {
 const typeSelect = document.getElementById("type-select");
 const productTypes = [];
 
+/**
+ * Capitalizes the first letter of a string.
+ * @param {String} string The string to capitalize.
+ * @returns {String} The capitalized string.
+ */
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+/**
+ * Populates the product list view.
+ */
 async function populateProducts() {
     while (productItems.firstChild) {
         productItems.removeChild(productItems.firstChild);
@@ -117,6 +137,9 @@ const createProductNameInput = document.getElementById("create-product-name-inpu
 const createProductPriceInput = document.getElementById("create-product-price-input");
 const confirmCreate = document.getElementById("confirm-create");
 
+/**
+ * Enables/disables the create product button if the required fields are filled.
+ */
 function updateButton() {
     if (checked.length === 0 || createProductNameInput.value === "" || createProductPriceInput.value === "") {
         confirmCreate.disabled = true;
@@ -125,6 +148,9 @@ function updateButton() {
     }
 }
 
+/**
+ * Sets up the ingredients list.
+ */
 async function setupIngredients() {
     inventory = await request("/get-inventory");
 
@@ -161,6 +187,7 @@ async function setupIngredients() {
 createProductNameInput.addEventListener("input", updateButton);
 createProductPriceInput.addEventListener("input", updateButton);
 
+// Creates a new product.
 confirmCreate.addEventListener("click", async function() {
     var name = createProductNameInput.value;
     var price = createProductPriceInput.value;

@@ -13,6 +13,7 @@ notes
 
 # Sensitive files
 users.csv
+.env
 
 # DB login
 db_login.cmd

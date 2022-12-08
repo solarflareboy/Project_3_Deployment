@@ -25,17 +25,23 @@
                     <div id="report-input">
                         <div id="sales-report-info" style="display: none;">
                             <p class="info-description">The sales report shows the number of sales and profit for each menu item between a provided time window. Sales are sorted from most sold to least sold.</p>
-                            <h4 class="input-type">Start Date</h4>
-                            <input type="date" id="sales-start-date" class="date-input">
-                            <h4 class="input-type">End Date</h4>
-                            <input type="date" id="sales-end-date" class="date-input">
+                            <label>
+                                <h4 class="input-type">Start Date</h4>
+                                <input type="date" id="sales-start-date" class="date-input">
+                            </label>
+                            <label>
+                                <h4 class="input-type">End Date</h4>
+                                <input type="date" id="sales-end-date" class="date-input">
+                            </label>
                             <br>
                             <button id="sales-report-button" class="generate-button">Generate Report</button>
                         </div>
                         <div id="excess-report-info" style="display: none;">
                             <p class="info-description">The excess report displays all items that have only sold less than 10% of their inventory between the timestamp and today.</p>
-                            <h4 class="input-type">Timestamp</h4>
-                            <input type="date" id="excess-timestamp" class="date-input">
+                            <label>
+                                <h4 class="input-type">Timestamp</h4>
+                                <input type="date" id="excess-timestamp" class="date-input">
+                            </label>
                             <br>
                             <button id="excess-report-button" class="generate-button">Generate Report</button>
                         </div>
@@ -45,10 +51,14 @@
                         </div>
                         <div id="together-report-info" style="display: none;">
                             <p class="info-description">The sells together report displays the top 10 pairs of items that are commonly sold together, accounting for general popularity bias.</p>
-                            <h4 class="input-type">Start Date</h4>
-                            <input type="date" id="together-start-date" class="date-input">
-                            <h4 class="input-type">End Date</h4>
-                            <input type="date" id="together-end-date" class="date-input">
+                            <label>
+                                <h4 class="input-type">Start Date</h4>
+                                <input type="date" id="together-start-date" class="date-input">
+                            </label>
+                            <label>
+                                <h4 class="input-type">End Date</h4>
+                                <input type="date" id="together-end-date" class="date-input">
+                            </label>
                             <br>
                             <button id="together-report-button" class="generate-button">Generate Report</button>
                         </div>

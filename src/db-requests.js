@@ -1,6 +1,5 @@
 const { Pool } = require("pg");
 
-// Creates a pool to connect to database that allows querying
 /**
  * Creates a pool to connect to database that allows querying
  * @return Pool connection to database
@@ -56,6 +55,35 @@ async function attemptLogin(pool, username, password) {
     } catch (err) {
         return err.stack;
     }
+}
+
+/**
+ * Authenticates the user with Google OAuth, logging them in if they are registered.
+ * @param pool Uses pool connection to database.
+ * @param token The token given by Google OAuth.
+ * @param authClient The Google OAuth client.
+ * @returns An Employee object, containing their ID, first and last name, and their employee type.
+ */
+async function loginOAuth(pool, token, authClient) {
+    const ticket = await authClient.verifyIdToken({
+        idToken: token,
+        audience: process.env.CLIENT_ID
+    });
+
+    const payload = ticket.getPayload();
+    const existing = await pool.query(`SELECT * FROM employees WHERE oauth_email = '${payload.email}';`);
+    const user = existing.rows[0];
+
+    if (user) {
+        return {
+            employee_id: user.employee_id,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            employee_type: user.is_manager ? "manager" : "cashier"
+        }
+    }
+
+    return null
 }
 
 /**
@@ -320,6 +348,13 @@ async function salesReport(pool, startDate, endDate) {
     return report;
 }
 
+/**
+* Creates a report that details which pairs of products were sold together the most in a specified timespan
+* @param pool  Uses pool connection to database
+* @param startDate The beginning date of the desired timespan
+* @param endDate The ending date of the desired timespan
+* @return String showing each product pair and the number of times it was sold
+*/
 async function togetherReport(pool, startDate, endDate) {
     var productsString = "";
     var productsList = []; // list of products
@@ -515,5 +550,6 @@ module.exports = {
     salesReport,
     restockReport,
     excessReport,
-    togetherReport
+    togetherReport,
+    loginOAuth
 }

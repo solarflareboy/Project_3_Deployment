@@ -8,12 +8,22 @@ const addToStock = document.getElementById("add-to-stock");
 const restockQuantity = document.getElementById("restock-quantity");
 const thresholdMessage = document.getElementById("threshold-message");
 
+/**
+ * Converts an integer to a comma-separated number.
+ * @param {int} num 
+ * @returns A comma-separated number.
+ */
 function addCommaToNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 let currentIngredient = null
 
+/**
+ * Restocks an ingredient by the given amount.
+ * @param {Ingredient} ingredient an ingredient object.
+ * @param {int} amount the amount to restock the ingredient by.
+ */
 async function restockIngredient(ingredient, amount) {
     const currentAmount = ingredient.quantity;
 
@@ -35,6 +45,10 @@ async function restockIngredient(ingredient, amount) {
     restockContent.style.display = "none";
 }
 
+/**
+ * Sets an ingredient to be the currently selected ingredient to restock.
+ * @param {Ingredient} ingredient An ingredient object.
+ */
 function setRestockIngredient(ingredient) {
     restockPreMessage.style.display = "none";
     restockIngredientName.innerText = `Restock ${ingredient.ingredient_name}`;
@@ -74,6 +88,9 @@ restockQuantity.addEventListener("input", function() {
     }
 })
 
+/**
+ * Populates the inventory window with the current ingredients.
+ */
 async function populateInventory() {
     while (inventoryItems.firstChild) {
         inventoryItems.removeChild(inventoryItems.firstChild);

@@ -1,5 +1,10 @@
+
+/**
+ * Authenticates the user with Google OAuth, logging them in if they are registered
+ * @param {*} googleUser A Google user object
+ */
 async function signInOAuth(googleUser) {
-    const token = googleUser.credential
+    const token = googleUser.credential;
 
     const result = await fetch("/oauth-signin", {
         method: "POST",
@@ -7,21 +12,21 @@ async function signInOAuth(googleUser) {
         body: JSON.stringify({ token })
     })
 
-    const data = await result.text()
+    const data = await result.text();
 
     if (!data) {
-        alert("Error: this Google account is not registered with the system.")
+        alert("Error: this Google account is not registered with the system.");
 
-        return
+        return;
     }
 
-    const employeeInfo = JSON.parse(data)
+    const employeeInfo = JSON.parse(data);
 
-    localStorage.setItem("employeeInfo", JSON.stringify(employeeInfo))
+    localStorage.setItem("employeeInfo", JSON.stringify(employeeInfo));
 
     if (employeeInfo.employee_type === "manager") {
-        window.location.href = "/manager"
+        window.location.href = "/manager";
     } else {
-        window.location.href = "/cashier"
+        window.location.href = "/cashier";
     }
 }

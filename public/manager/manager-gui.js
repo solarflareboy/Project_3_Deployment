@@ -13,7 +13,7 @@ logoutButton.addEventListener("click", async function() {
     localStorage.removeItem("employeeInfo");
     await request("/logout");
     window.location.href = "/";
-})
+});
 
 const managerName = document.getElementById("manager-name")
 const employeeInfo = JSON.parse(localStorage.getItem("employeeInfo"))
@@ -22,6 +22,10 @@ if (employeeInfo) {
     managerName.innerText = `Manager: ${employeeInfo.first_name} ${employeeInfo.last_name}`
 }
 
+/**
+ * Opens a new popup window, used for a sub-GUI of the manager view.
+ * @param {string} popupType The type of popup to open, either "inventory", "products", "reports", or "employees".
+ */
 function openPopup(popupType) {
     const frame = document.createElement("iframe");
 
@@ -45,6 +49,9 @@ function openPopup(popupType) {
 
 let isClosing = false;
 
+/**
+ * Closes the currently-open popup window, if it is open.
+ */
 function closePopup() {
     if (isClosing) {
         return;

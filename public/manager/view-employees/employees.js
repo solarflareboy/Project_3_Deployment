@@ -12,12 +12,19 @@ const fireEmployee = document.getElementById("fire-employee");
 
 let currentEmployee = null
 
+/**
+ * Sets the panel to display a message instead of the modify employee form, automatically hiding the form.
+ * @param message The message to display.
+ */
 function setPanelMessage(message) {
     modifyPreMessage.innerText = message;
     modifyPreMessage.style.display = "flex";
     modifyContent.style.display = "none";
 }
 
+/**
+ * Saves the changes made to the currently-selected employee.
+ */
 async function saveChanges() {
     const success = await request("/modify-employee", {
         employee_id: currentEmployee.employee_id,
@@ -43,6 +50,7 @@ lastNameInput.addEventListener("keydown", function(event) {
 
 confirmChanges.addEventListener("click", saveChanges);
 
+// Promotes the currently-selected employee to a manager.
 promoteEmployee.addEventListener("click", async function() {
     if (firstNameInput.value !== currentEmployee.first_name || lastNameInput.value !== currentEmployee.last_name) {
         await request("/modify-employee", {
@@ -61,6 +69,7 @@ promoteEmployee.addEventListener("click", async function() {
     populateEmployees();
 })
 
+// Fires the currently-selected employee.
 fireEmployee.addEventListener("click", async function() {
     const success = await request("/remove-employee", {
         employee_id: currentEmployee.employee_id
@@ -75,6 +84,10 @@ fireEmployee.addEventListener("click", async function() {
     populateEmployees();
 })
 
+/**
+ * Sets an employee to be the currently-selected employee.
+ * @param {Employee} employee An employee object.
+ */
 function setCurrentEmployee(employee) {
     currentEmployee = employee;
 
@@ -94,6 +107,9 @@ function setCurrentEmployee(employee) {
     modifyContent.style.display = "flex";
 }
 
+/**
+ * Populates the employees window with all employees.
+ */
 async function populateEmployees() {
     while (employeesWindow.firstChild) {
         employeesWindow.removeChild(employeesWindow.firstChild);
@@ -135,10 +151,18 @@ const addEmployeePasswordConfirm = document.getElementById("add-employee-passwor
 const confirmAdd = document.getElementById("confirm-add");
 const matchMessage = document.getElementById("match-message");
 
+/**
+ * Checks whether the text in the password and confirm password fields match.
+ * @returns {boolean} Whether the passwords match.
+ */
 function arePasswordsMatching() {
     return addEmployeePassword.value === addEmployeePasswordConfirm.value;
 }
 
+/**
+ * Checks whether the input for adding an employee is valid.
+ * @returns {boolean} Whether the input is valid.
+ */
 function checkInputValidity() {
     if (arePasswordsMatching()) {
         matchMessage.innerText = "";
@@ -161,6 +185,9 @@ addEmployeeLastName.addEventListener("input", checkInputValidity);
 addEmployeePassword.addEventListener("input", checkInputValidity);
 addEmployeePasswordConfirm.addEventListener("input", checkInputValidity);
 
+/**
+ * Adds an employee to the database.
+ */
 async function addEmployee() {
     await request("/add-employee", {
         first_name: addEmployeeFirstName.value,

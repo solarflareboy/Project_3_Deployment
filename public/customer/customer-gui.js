@@ -16,17 +16,29 @@ const addedProducts = [];
 
 let total = 0;
 
+/**
+ * Updates the total price of the order. 
+ * @param newPrice The new price of the order.
+ */
 function updatePrice(newPrice) {
     total = Math.abs(newPrice);
     runningTotal.innerHTML = `<p>Subtotal: $${parseFloat(total).toFixed(2)}</p>`;
 }
 
+/** 
+ * Converts a string to title case.
+ * @param {String} text The string to convert.
+ * @returns {String} The converted string.
+*/
 function textToTitleCase(text) {
     return text.replace(/\w\S*/g, function(txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     })
 }
 
+/** 
+ * Populates the menu with the products from the database.
+*/
 async function populate() {
     const products = await request("/menu-items");
     const organizedProducts = {};
@@ -75,7 +87,7 @@ async function populate() {
             addedProducts.push(product);
 
             updatePrice(total + product.price);
-        })
+        });
 
         product.element = item;
 
@@ -101,7 +113,7 @@ async function populate() {
             for (const product of organizedProducts[productType]) {
                 menuItems.appendChild(product.element);
             }
-        })
+        });
 
         categories.appendChild(category);
     }
@@ -139,8 +151,6 @@ loginButton.addEventListener("click", async (event) => {
     console.log(response);
 
     switch (response) {
-        // TODO: successful login will have cookie attached so only authenticated users can access pages
-
         case "LOGIN_MANAGER":
             window.location.href = "/manager";
             break;

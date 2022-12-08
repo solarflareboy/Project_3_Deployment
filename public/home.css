@@ -37,7 +37,6 @@ body {
     height: 60vh;
     display: flex;
     flex-direction: column;
-    /* background-color: rgba(255, 255, 255); */
     align-self: center;
 }
 
@@ -109,21 +108,14 @@ body {
     display: flex;
     position: relative;
     width: 100%;
-    /* height: 30px; */
     height: 3rem;
-    /* line-height: 40px; */
-    /* font-size: 15px; */
-    /* font-family: sans-serif; */
     text-decoration: none;
     color: #333;
-    /* border: 2px solid #333; */
     background-color: #eee;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
-    /* letter-spacing: 2px; */
     text-align: center;
-    /* position: absolute; */
     transition: all 150ms;
     font-size: 1.125rem;
     cursor: pointer;
